@@ -30,7 +30,10 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.5
-
+  font_awesome_flutter: ^10.1.0
+  animated_splash_screen: ^1.2.0
+  fluttertoast: ^8.0.9
+  introduction_screen: ^3.0.2
 
 
 

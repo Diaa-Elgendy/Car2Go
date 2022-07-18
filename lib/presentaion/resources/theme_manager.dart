@@ -37,7 +37,6 @@ ThemeData getApplicationTheme() {
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(AppSize.borderRadius))),
 
-
       //Button theme
       buttonTheme: const ButtonThemeData(
           shape: StadiumBorder(),
@@ -47,15 +46,15 @@ ThemeData getApplicationTheme() {
       //Elevated Button theme
       elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-              textStyle: getRegularStyle(),
-              primary: ColorManager.primary,
-              onPrimary: ColorManager.primary,
-              elevation: 0,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(AppSize.borderRadius)),
-          )),
-
-
+        textStyle: getRegularStyle(),
+        backgroundColor: ColorManager.primary,
+        foregroundColor: ColorManager.primary,
+        elevation: 0,
+        side: const BorderSide(width: 1.5, color: ColorManager.primaryLight),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppSize.borderRadius),
+        ),
+      )),
 
       //outLined Button theme
       outlinedButtonTheme: OutlinedButtonThemeData(
@@ -92,13 +91,13 @@ ThemeData getApplicationTheme() {
             borderRadius:
                 BorderRadius.all(Radius.circular(AppSize.borderRadius))),
         errorBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-                color: ColorManager.red, width: AppSize.borderWidth),
+            borderSide:
+                BorderSide(color: ColorManager.red, width: AppSize.borderWidth),
             borderRadius:
                 const BorderRadius.all(Radius.circular(AppSize.borderRadius))),
         focusedErrorBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-                color: ColorManager.red, width: AppSize.borderWidth),
+            borderSide:
+                BorderSide(color: ColorManager.red, width: AppSize.borderWidth),
             borderRadius:
                 const BorderRadius.all(Radius.circular(AppSize.borderRadius))),
       ),
