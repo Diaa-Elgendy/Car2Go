@@ -5,6 +5,7 @@ import 'package:car2go/presentaion/resources/routes_manager.dart';
 import 'package:car2go/presentaion/resources/style_manager.dart';
 import 'package:car2go/presentaion/resources/values_manager.dart';
 import 'package:car2go/presentaion/screens/home_screen.dart';
+import 'package:car2go/presentaion/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
@@ -28,13 +29,13 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       titleTextStyle: getSemiBoldStyle(fontSize: FontSize.f28),
       bodyTextStyle: getRegularStyle(fontSize: FontSize.f20),
       bodyPadding: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
-      pageColor: Colors.white,
+      pageColor: ColorManager.offWhite,
       imagePadding: EdgeInsets.zero,
     );
 
     return IntroductionScreen(
       key: introKey,
-      globalBackgroundColor: Colors.white,
+      globalBackgroundColor: ColorManager.offWhite,
       globalHeader: Align(
         alignment: Alignment.topRight,
         child: SafeArea(
@@ -58,7 +59,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           decoration: pageDecoration,
         ),
       ],
-      onDone: () => navigateAndFinish(context, HomeScreen()),
+      onDone: () => navigateAndFinish(context, const LoginScreen()),
       showSkipButton: false,
       skipOrBackFlex: 0,
       nextFlex: 0,

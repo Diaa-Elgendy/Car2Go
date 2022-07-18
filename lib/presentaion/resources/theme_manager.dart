@@ -37,6 +37,7 @@ ThemeData getApplicationTheme() {
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(AppSize.borderRadius))),
 
+
       //Button theme
       buttonTheme: const ButtonThemeData(
           shape: StadiumBorder(),
@@ -47,14 +48,16 @@ ThemeData getApplicationTheme() {
       elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
         textStyle: getRegularStyle(),
-        backgroundColor: ColorManager.primary,
-        foregroundColor: ColorManager.primary,
+        primary: ColorManager.primary,
+
+
         elevation: 0,
         side: const BorderSide(width: 1.5, color: ColorManager.primaryLight),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppSize.borderRadius),
         ),
       )),
+
 
       //outLined Button theme
       outlinedButtonTheme: OutlinedButtonThemeData(
