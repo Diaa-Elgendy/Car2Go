@@ -119,6 +119,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    //todo: add colored logos
                     IconButton(onPressed: () {}, icon: Icon(FontAwesomeIcons.facebook)),
                     IconButton(onPressed: () {}, icon: Icon(FontAwesomeIcons.apple)),
                     IconButton(onPressed: () {}, icon: Icon(FontAwesomeIcons.google))
