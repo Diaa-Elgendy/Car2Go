@@ -1,3 +1,4 @@
+import 'package:car2go/business_logic/enums.dart';
 import 'package:car2go/presentaion/resources/color_manager.dart';
 import 'package:car2go/presentaion/resources/style_manager.dart';
 import 'package:car2go/presentaion/resources/values_manager.dart';
@@ -6,7 +7,6 @@ import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 
-enum TextFieldType { Date, Time, Text }
 
 class CustomTextField extends StatelessWidget {
   TextEditingController controller;
@@ -34,7 +34,7 @@ class CustomTextField extends StatelessWidget {
     bool readOnly = false;
     VoidCallback onTap = () {};
 
-    if (textFieldType == TextFieldType.Date) {
+    if (textFieldType == TextFieldType.date) {
       textInputType = TextInputType.datetime;
       prefix = Icons.date_range;
       readOnly = true;
@@ -46,7 +46,7 @@ class CustomTextField extends StatelessWidget {
               controller.text = DateFormat('yyyy-MM-dd').format(date);
             });
       };
-    } else if (textFieldType == TextFieldType.Time) {
+    } else if (textFieldType == TextFieldType.time) {
       textInputType = TextInputType.datetime;
       prefix = FontAwesomeIcons.clock;
       readOnly = true;

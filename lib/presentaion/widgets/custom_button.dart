@@ -9,14 +9,20 @@ import 'package:intl/intl.dart';
 
 class CustomButton extends StatelessWidget {
   String text;
+  double fontSize;
+  double width;
+  double height;
   VoidCallback function;
   bool fullWidth;
 
   CustomButton(
       {Key? key,
-        required this.text,
-        required this.function,
-        this.fullWidth = false})
+      required this.text,
+      required this.function,
+      this.fontSize = FontSize.f20,
+      this.width = AppSize.buttonWidth,
+      this.height = AppSize.buttonHeight,
+      this.fullWidth = false})
       : super(key: key);
 
   @override
@@ -25,8 +31,8 @@ class CustomButton extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          width: AppSize.buttonWidth,
-          height: AppSize.buttonHeight,
+          width: width,
+          height: height,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(AppSize.borderRadius),
             color: ColorManager.primary,
@@ -35,11 +41,13 @@ class CustomButton extends StatelessWidget {
             onPressed: function,
             child: Text(
               text,
-              style:
-              getMediumStyle(color: Colors.white, fontSize: FontSize.f20),
+              style: getMediumStyle(
+                color: Colors.white,
+                fontSize: fontSize,
+              ),
             ),
           ),
-        ),
+        )
       ],
     );
   }

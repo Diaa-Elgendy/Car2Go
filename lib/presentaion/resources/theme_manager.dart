@@ -95,12 +95,12 @@ ThemeData getApplicationTheme() {
                 BorderRadius.all(Radius.circular(AppSize.borderRadius))),
         errorBorder: OutlineInputBorder(
             borderSide:
-                BorderSide(color: ColorManager.red, width: AppSize.borderWidth),
+                BorderSide(color: ColorManager.toastError, width: AppSize.borderWidth),
             borderRadius:
                 const BorderRadius.all(Radius.circular(AppSize.borderRadius))),
         focusedErrorBorder: OutlineInputBorder(
             borderSide:
-                BorderSide(color: ColorManager.red, width: AppSize.borderWidth),
+                BorderSide(color: ColorManager.toastError, width: AppSize.borderWidth),
             borderRadius:
                 const BorderRadius.all(Radius.circular(AppSize.borderRadius))),
       ),

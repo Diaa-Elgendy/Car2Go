@@ -1,3 +1,4 @@
+import 'package:car2go/business_logic/enums.dart';
 import 'package:car2go/presentaion/resources/assets_manager.dart';
 import 'package:car2go/presentaion/resources/color_manager.dart';
 import 'package:car2go/presentaion/resources/font_manager.dart';
@@ -42,14 +43,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 Space(),
                 CustomTextField(
                   controller: emailController,
-                  textFieldType: TextFieldType.Text,
+                  textFieldType: TextFieldType.text,
                   text: 'Email',
                   prefix: Icons.email_outlined,
                 ),
                 Space(),
                 CustomTextField(
                   controller: passwordController,
-                  textFieldType: TextFieldType.Text,
+                  textFieldType: TextFieldType.text,
                   text: 'Password',
                   isPassword: true,
                   prefix: Icons.lock_outline,
