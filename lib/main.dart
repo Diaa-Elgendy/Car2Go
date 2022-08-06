@@ -1,5 +1,6 @@
 import 'package:car2go/presentaion/resources/theme_manager.dart';
 import 'package:car2go/presentaion/screens/car_details.dart';
+import 'package:car2go/presentaion/screens/navigation_screen.dart';
 import 'package:car2go/presentaion/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:car2go/presentaion/screens/car_details.dart';
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: getApplicationTheme(),
-      home: CarDetails(),
+      home: const NavigationScreen(),
     );
   }
 }

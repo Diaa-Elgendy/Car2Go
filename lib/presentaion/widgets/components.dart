@@ -1,12 +1,17 @@
+import 'package:car2go/presentaion/resources/assets_manager.dart';
 import 'package:car2go/presentaion/resources/color_manager.dart';
 import 'package:car2go/presentaion/resources/font_manager.dart';
+import 'package:car2go/presentaion/resources/routes_manager.dart';
 import 'package:car2go/presentaion/resources/style_manager.dart';
 import 'package:car2go/presentaion/resources/values_manager.dart';
+import 'package:car2go/presentaion/screens/car_details.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
+
+import '../../data/car_details.dart';
 
 class Space extends StatelessWidget {
   double width, height;
@@ -131,7 +136,7 @@ class IconText extends StatelessWidget {
   String text;
   IconData iconData;
 
-  IconText({required this.text,required this.iconData, super.key});
+  IconText({required this.text, required this.iconData, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -155,7 +160,13 @@ class IconText extends StatelessWidget {
 class RowWith2Texts extends StatelessWidget {
   String title, value;
   double fontSize;
-  RowWith2Texts({required this.title, required this.value, this.fontSize = FontSize.f16, Key? key}) : super(key: key);
+
+  RowWith2Texts(
+      {required this.title,
+      required this.value,
+      this.fontSize = FontSize.f16,
+      Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -164,14 +175,119 @@ class RowWith2Texts extends StatelessWidget {
       children: [
         Text(
           title,
-          style: getRegularStyle(color: ColorManager.textColorLight, fontSize: fontSize),
+          style: getRegularStyle(
+              color: ColorManager.textColorLight, fontSize: fontSize),
         ),
         Text(
           value,
-          style: getRegularStyle(color: ColorManager.primaryLight, fontSize:fontSize),
+          style: getRegularStyle(
+              color: ColorManager.primaryLight, fontSize: fontSize),
         )
       ],
     );
   }
 }
 
+class FavouriteItem extends StatefulWidget {
+  CarDetails carDetails;
+  int index;
+
+  FavouriteItem({required this.carDetails, required this.index, Key? key})
+      : super(key: key);
+
+  @override
+  State<FavouriteItem> createState() => _FavouriteItemState();
+}
+
+class _FavouriteItemState extends State<FavouriteItem> {
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 140,
+      child: Card(
+        child: InkWell(
+          onTap: () async {
+            await Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CarDetailsScreen(
+                      carDetails: widget.carDetails, index: widget.index),
+                )).then((value) {
+              setState(() {});
+            });
+
+            setState(() {
+
+            print('object');
+            });
+          },
+          borderRadius: BorderRadius.circular(AppSize.borderRadius),
+          splashColor: ColorManager.primaryLight,
+          child: Padding(
+            padding: const EdgeInsets.all(AppPadding.cardPadding),
+            child: Row(
+              children: [
+                Image.asset(
+                  widget.carDetails.coverPhoto,
+                  height: 100,
+                  width: 100,
+                  fit: BoxFit.fill,
+                ),
+                Space(),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        widget.carDetails.company,
+                        style: getMediumStyle(color: ColorManager.primary),
+                      ),
+                      Text(
+                        widget.carDetails.model,
+                        style:
+                            getRegularStyle(color: ColorManager.textColorLight),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      const Spacer(),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            '${widget.carDetails.priceForDay} EGP/Day',
+                            style: getRegularStyle(color: ColorManager.primary),
+                          ),
+                          IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  widget.carDetails.favourite = !widget.carDetails.favourite;
+                                  if (widget.carDetails.favourite){
+                                    favourites.add(widget.carDetails);
+                                  }else{
+                                    favourites.remove(favourites[widget.index]);
+                                  }
+                                });
+                              },
+                              icon: Icon(
+                                widget.carDetails.favourite
+                                    ? Icons.favorite
+                                    : Icons.favorite_border_outlined,
+                                color: ColorManager.primary,
+                              ),
+                              constraints: const BoxConstraints(
+                                maxHeight: 30,
+                              )),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

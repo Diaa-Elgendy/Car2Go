@@ -14,14 +14,17 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class CarDetails extends StatefulWidget {
-  CarDetails({super.key});
+class CarDetailsScreen extends StatefulWidget {
+  CarDetails carDetails;
+  int index;
+
+  CarDetailsScreen({required this.carDetails,required this.index, super.key});
 
   @override
-  State<CarDetails> createState() => _CarDetailsState();
+  State<CarDetailsScreen> createState() => _CarDetailsState();
 }
 
-class _CarDetailsState extends State<CarDetails> {
+class _CarDetailsState extends State<CarDetailsScreen> {
   String startDate = DateTime.now()
           .add(const Duration(days: 1))
           .toString()
@@ -33,21 +36,27 @@ class _CarDetailsState extends State<CarDetails> {
 
   String rentDuration = '2';
 
-  int cost = porscheCayman.priceForDay * 2;
 
   @override
   Widget build(BuildContext context) {
+    int cost = widget.carDetails.priceForDay * 2;
+    final List<Widget> imageSliders = widget.carDetails.images
+        .map((item) => ClipRRect(
+        borderRadius:
+        const BorderRadius.all(Radius.circular(AppSize.borderRadius)),
+        child: Image.asset(item, fit: BoxFit.cover, width: 1000.0)))
+        .toList();
+
     return Scaffold(
       appBar: AppBar(
         title: Column(
           children: [
             Text(
-              'Porsche',
-              style: getMediumStyle(
-                  fontSize: FontSize.f16, color: ColorManager.primary),
+              widget.carDetails.company,
+              style: getMediumStyle(color: ColorManager.primary),
             ),
             Text(
-              '718 Cayman - 2020',
+              widget.carDetails.model,
               style: getMediumStyle(
                   fontSize: FontSize.f14, color: ColorManager.textColorLight),
             ),
@@ -78,17 +87,17 @@ class _CarDetailsState extends State<CarDetails> {
               scrollDirection: Axis.horizontal,
               children: [
                 SpecsCard(
-                    'Max Power', porscheCayman.specs.maxPower.toString(), 'HP'),
+                    'Max Power', widget.carDetails.specs.maxPower.toString(), 'HP'),
                 SpecsCard(
                     '0-100 Kmh',
-                    porscheCayman.specs.zeroToHundredSpeed.toString(),
+                    widget.carDetails.specs.zeroToHundredSpeed.toString(),
                     'Seconds'),
-                SpecsCard('Top Speed', porscheCayman.specs.topSpeed.toString(),
+                SpecsCard('Top Speed', widget.carDetails.specs.topSpeed.toString(),
                     'Km/H'),
                 SpecsCard('Motor Size',
-                    porscheCayman.specs.motorSize.toString(), 'CC'),
+                    widget.carDetails.specs.motorSize.toString(), 'CC'),
                 SpecsCard(
-                    'Torque', porscheCayman.specs.maxTorque.toString(), 'Nm'),
+                    'Torque', widget.carDetails.specs.maxTorque.toString(), 'Nm'),
               ],
             ),
           ),
@@ -97,19 +106,19 @@ class _CarDetailsState extends State<CarDetails> {
           Space(),
           IconText(
             iconData: Icons.person_outline,
-            text: ' Passengers: ${porscheCayman.carInfo.numberOfPassengers}',
+            text: ' Passengers: ${widget.carDetails.carInfo.numberOfPassengers}',
           ),
           Space(height: 10),
           ImageText(
             iconData: ImageAssets.carDoor,
-            text: 'Doors: ${porscheCayman.carInfo.numberOfDoors}',
+            text: 'Doors: ${widget.carDetails.carInfo.numberOfDoors}',
             size: 21,
             paddingValue: 4,
           ),
           Space(height: 10),
           ImageText(
             iconData: ImageAssets.motor,
-            text: ' Transmission: ${porscheCayman.carInfo.transmission}',
+            text: ' Transmission: ${widget.carDetails.carInfo.transmission}',
             paddingValue: 2,
           ),
           Space(height: 35),
@@ -117,7 +126,7 @@ class _CarDetailsState extends State<CarDetails> {
           Space(),
           ImageText(
             iconData: ImageAssets.capacity,
-            text: '  Luggage Volume: ${porscheCayman.capacity.luggageSize} L',
+            text: '  Luggage Volume: ${widget.carDetails.capacity.luggageSize} L',
             size: 20,
             paddingValue: 3,
           ),
@@ -125,7 +134,7 @@ class _CarDetailsState extends State<CarDetails> {
           ImageText(
               iconData: ImageAssets.fuelTank,
               text:
-                  ' Fuel Tank Volume: ${porscheCayman.capacity.fuelTankSize} L',
+                  ' Fuel Tank Volume: ${widget.carDetails.capacity.fuelTankSize} L',
               size: 23,
               paddingValue: 3),
           Space(height: 35),
@@ -133,23 +142,23 @@ class _CarDetailsState extends State<CarDetails> {
           Space(),
           IconText(
             iconData: Icons.width_wide_outlined,
-            text: '  Width: ${porscheCayman.body.width} m',
+            text: '  Width: ${widget.carDetails.body.width} m',
           ),
           Space(height: 10),
           ImageText(
             iconData: ImageAssets.wheel,
-            text: '   Wheel Base: ${porscheCayman.body.wheelBase} m',
+            text: '   Wheel Base: ${widget.carDetails.body.wheelBase} m',
             size: 20,
             paddingValue: 1,
           ),
           Space(height: 10),
           ImageText(
               iconData: ImageAssets.weight,
-              text: '   Max Load: ${porscheCayman.body.maxLoad} Kg'),
+              text: '   Max Load: ${widget.carDetails.body.maxLoad} Kg'),
           Space(height: 10),
           ImageText(
               iconData: ImageAssets.weight,
-              text: '   Weight: ${porscheCayman.body.carWeight} Kg'),
+              text: '   Weight: ${widget.carDetails.body.carWeight} Kg'),
           Space(height: 35),
           HeaderWithDivider(title: 'Pickup Location'),
           Space(),
@@ -220,7 +229,8 @@ class _CarDetailsState extends State<CarDetails> {
                         });
                       });
 
-                      cost = porscheCayman.priceForDay * int.parse(rentDuration);
+                      cost =
+                          widget.carDetails.priceForDay * int.parse(rentDuration);
                     },
                     text: 'Change Time Range',
                     fontSize: FontSize.f16,
@@ -243,17 +253,14 @@ class _CarDetailsState extends State<CarDetails> {
                   Space(),
                   RowWith2Texts(
                       title: 'Cost/Day',
-                      value: '${porscheCayman.priceForDay} EGP'),
+                      value: '${widget.carDetails.priceForDay} EGP'),
                   Space(),
-                  RowWith2Texts(
-                      title: 'Total Cost',
-                      value:
-                          '$cost EGP'),
+                  RowWith2Texts(title: 'Total Cost', value: '$cost EGP'),
                   Space(),
                   CustomButton(
                     function: () {
-
-                      navigateTo(context: context, widget: PaymentScreen(cost: cost));
+                      navigateTo(
+                          context: context, widget: PaymentScreen(cost: cost));
                     },
                     text: 'Continue To Payment',
                     fontSize: FontSize.f16,
@@ -266,13 +273,28 @@ class _CarDetailsState extends State<CarDetails> {
           ),
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            widget.carDetails.favourite = !widget.carDetails.favourite;
+            if (widget.carDetails.favourite){
+              favourites.add(widget.carDetails);
+              print(cars[widget.index].model);
+              print(widget.carDetails.model);
+            }else{
+              favourites.remove(favourites[widget.index]);
+            }
+          });
+        },
+        elevation: AppSize.appBarElevation,
+        backgroundColor: ColorManager.primary,
+        child: Icon(
+            widget.carDetails.favourite
+                ? Icons.favorite
+                : Icons.favorite_border_outlined,
+            size: 24),
+      ),
     );
   }
 }
 
-final List<Widget> imageSliders = porscheCayman.images
-    .map((item) => ClipRRect(
-        borderRadius:
-            const BorderRadius.all(Radius.circular(AppSize.borderRadius)),
-        child: Image.asset(item, fit: BoxFit.cover, width: 1000.0)))
-    .toList();
