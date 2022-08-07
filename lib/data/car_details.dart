@@ -1,6 +1,7 @@
 import '../presentaion/resources/assets_manager.dart';
 
 class CarDetails {
+  int id;
   String company;
   String model;
   Specs specs;
@@ -14,6 +15,7 @@ class CarDetails {
   bool favourite;
 
   CarDetails({
+    required this.id,
     required this.company,
     required this.model,
     required this.coverPhoto,
@@ -79,6 +81,7 @@ List<CarDetails> favourites = [];
 
 List<CarDetails> cars = [
   CarDetails(
+    id: 1,
     company: 'Porsche',
     model: '718 Cayman - 2020',
     coverPhoto: ImageAssets.porscheCaymanCover,
@@ -106,6 +109,8 @@ List<CarDetails> cars = [
     priceForDay: 600,
   ),
   CarDetails(
+    id: 2,
+
     company: 'Kia',
     model: 'Cerato - 2022',
     coverPhoto: ImageAssets.kiaCeratoCover,
@@ -134,6 +139,8 @@ List<CarDetails> cars = [
     priceForDay: 300,
   ),
   CarDetails(
+    id: 3,
+
     company: 'Toyota',
     model: 'Corolla - 2022',
     coverPhoto: ImageAssets.toyotaCorollaCover,
@@ -162,6 +169,8 @@ List<CarDetails> cars = [
     priceForDay: 350,
   ),
   CarDetails(
+    id: 4,
+
     company: 'Ford',
     model: 'Mustang GT - 2022',
     coverPhoto: ImageAssets.fordMustangCover,
@@ -192,6 +201,8 @@ List<CarDetails> cars = [
 ];
 
 CarDetails porscheCayman = CarDetails(
+  id: 1,
+
   company: 'Porsche',
   model: '718 Cayman - 2020',
   coverPhoto: ImageAssets.porscheCaymanCover,

@@ -35,11 +35,10 @@ class _CarDetailsState extends State<CarDetailsScreen> {
           .substring(0, 10);
 
   String rentDuration = '2';
-
+  int? cost;
 
   @override
   Widget build(BuildContext context) {
-    int cost = widget.carDetails.priceForDay * 2;
     final List<Widget> imageSliders = widget.carDetails.images
         .map((item) => ClipRRect(
         borderRadius:
@@ -81,7 +80,7 @@ class _CarDetailsState extends State<CarDetailsScreen> {
           HeaderWithDivider(title: 'Specs'),
           Space(),
           SizedBox(
-            height: 115,
+            height: 90,
             child: ListView(
               physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
@@ -89,15 +88,17 @@ class _CarDetailsState extends State<CarDetailsScreen> {
                 SpecsCard(
                     'Max Power', widget.carDetails.specs.maxPower.toString(), 'HP'),
                 SpecsCard(
-                    '0-100 Kmh',
-                    widget.carDetails.specs.zeroToHundredSpeed.toString(),
-                    'Seconds'),
+                    'Max Torque', widget.carDetails.specs.maxTorque.toString(), 'Nm'),
                 SpecsCard('Top Speed', widget.carDetails.specs.topSpeed.toString(),
                     'Km/H'),
+                SpecsCard(
+                    '0-100 Km/H',
+                    widget.carDetails.specs.zeroToHundredSpeed.toString(),
+                    'Seconds'),
+
                 SpecsCard('Motor Size',
                     widget.carDetails.specs.motorSize.toString(), 'CC'),
-                SpecsCard(
-                    'Torque', widget.carDetails.specs.maxTorque.toString(), 'Nm'),
+
               ],
             ),
           ),
@@ -226,11 +227,13 @@ class _CarDetailsState extends State<CarDetailsScreen> {
                               .substring(8, 10);
                           startDate = value[0].toString().substring(0, 10);
                           endDate = value[1].toString().substring(0, 10);
+                          cost =
+                              widget.carDetails.priceForDay * int.parse(rentDuration);
                         });
                       });
 
-                      cost =
-                          widget.carDetails.priceForDay * int.parse(rentDuration);
+
+                      print(cost);
                     },
                     text: 'Change Time Range',
                     fontSize: FontSize.f16,
@@ -255,12 +258,14 @@ class _CarDetailsState extends State<CarDetailsScreen> {
                       title: 'Cost/Day',
                       value: '${widget.carDetails.priceForDay} EGP'),
                   Space(),
-                  RowWith2Texts(title: 'Total Cost', value: '$cost EGP'),
-                  Space(),
+                  if (cost != null)...[
+                    RowWith2Texts(title: 'Total Cost', value: '$cost EGP'),
+                    Space(),
+                  ],
                   CustomButton(
                     function: () {
                       navigateTo(
-                          context: context, widget: PaymentScreen(cost: cost));
+                          context: context, widget: PaymentScreen(cost: cost!));
                     },
                     text: 'Continue To Payment',
                     fontSize: FontSize.f16,
@@ -278,11 +283,21 @@ class _CarDetailsState extends State<CarDetailsScreen> {
           setState(() {
             widget.carDetails.favourite = !widget.carDetails.favourite;
             if (widget.carDetails.favourite){
-              favourites.add(widget.carDetails);
+              for(int i =0; i<cars.length;i++){
+                if (cars[i].id== widget.carDetails.id) {
+                  favourites.add(cars[i]);
+                  break;
+                }
+              }
               print(cars[widget.index].model);
               print(widget.carDetails.model);
             }else{
-              favourites.remove(favourites[widget.index]);
+              for(int i =0; i<favourites.length;i++){
+                if (favourites[i].id == widget.carDetails.id) {
+                  favourites.remove(favourites[i]);
+                  break;
+                }
+              }
             }
           });
         },

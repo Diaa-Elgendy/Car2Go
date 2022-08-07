@@ -2,7 +2,7 @@ import 'package:car2go/data/car_details.dart';
 import 'package:car2go/presentaion/resources/font_manager.dart';
 import 'package:car2go/presentaion/resources/style_manager.dart';
 import 'package:car2go/presentaion/resources/values_manager.dart';
-import 'package:car2go/presentaion/screens/car_details.dart';
+import 'package:car2go/presentaion/screens/car_details_screen.dart';
 import 'package:car2go/presentaion/widgets/components.dart';
 import 'package:flutter/material.dart';
 

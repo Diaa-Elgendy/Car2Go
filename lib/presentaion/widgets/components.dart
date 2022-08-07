@@ -4,7 +4,7 @@ import 'package:car2go/presentaion/resources/font_manager.dart';
 import 'package:car2go/presentaion/resources/routes_manager.dart';
 import 'package:car2go/presentaion/resources/style_manager.dart';
 import 'package:car2go/presentaion/resources/values_manager.dart';
-import 'package:car2go/presentaion/screens/car_details.dart';
+import 'package:car2go/presentaion/screens/car_details_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
@@ -66,7 +66,7 @@ class SpecsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 120,
+      height: 50,
       child: Card(
         elevation: 1,
         child: Padding(
@@ -74,24 +74,25 @@ class SpecsCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Center(
-                  child: Text(
+              Text(
                 title,
                 style: getRegularStyle(
-                    fontSize: FontSize.f16, color: ColorManager.textColorLight),
-              )),
-              Space(),
-              Text(
-                value,
-                style: getMediumStyle(
-                    color: ColorManager.primary, fontSize: FontSize.f18),
+                    fontSize: FontSize.f18, color: ColorManager.primary),
               ),
-              Text(
-                unit,
-                style: getRegularStyle(
-                    fontSize: FontSize.f16, color: ColorManager.textColorLight),
-                overflow: TextOverflow.ellipsis,
-                maxLines: 1,
+              Space(height: 5),
+              Row(
+                children: [
+                  Text(
+                    value,
+                    style: getRegularStyle(color: ColorManager.textColorLight),
+                  ),
+                  Text(
+                    ' $unit',
+                    style: getRegularStyle(color: ColorManager.textColorLight),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                  ),
+                ],
               ),
             ],
           ),
@@ -217,8 +218,7 @@ class _FavouriteItemState extends State<FavouriteItem> {
             });
 
             setState(() {
-
-            print('object');
+              print('object');
             });
           },
           borderRadius: BorderRadius.circular(AppSize.borderRadius),
@@ -261,10 +261,11 @@ class _FavouriteItemState extends State<FavouriteItem> {
                           IconButton(
                               onPressed: () {
                                 setState(() {
-                                  widget.carDetails.favourite = !widget.carDetails.favourite;
-                                  if (widget.carDetails.favourite){
+                                  widget.carDetails.favourite =
+                                      !widget.carDetails.favourite;
+                                  if (widget.carDetails.favourite) {
                                     favourites.add(widget.carDetails);
-                                  }else{
+                                  } else {
                                     favourites.remove(favourites[widget.index]);
                                   }
                                 });

@@ -2,8 +2,10 @@ import 'package:car2go/business_logic/enums.dart';
 import 'package:car2go/presentaion/resources/assets_manager.dart';
 import 'package:car2go/presentaion/resources/color_manager.dart';
 import 'package:car2go/presentaion/resources/font_manager.dart';
+import 'package:car2go/presentaion/resources/routes_manager.dart';
 import 'package:car2go/presentaion/resources/style_manager.dart';
 import 'package:car2go/presentaion/resources/values_manager.dart';
+import 'package:car2go/presentaion/screens/navigation_screen.dart';
 import 'package:car2go/presentaion/widgets/components.dart';
 import 'package:car2go/presentaion/widgets/custom_button.dart';
 import 'package:car2go/presentaion/widgets/custom_textfield.dart';
@@ -73,14 +75,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         }),
                     Text(
                       'Remember Me',
-                      style: getRegularStyle(fontSize: FontSize.f14),
+                      style: getRegularStyle(),
                     ),
                     const Spacer(),
                     TextButton(
                       onPressed: () {},
                       child: Text(
                         'Forget Password?',
-                        style: getRegularStyle(fontSize: FontSize.f14),
+                        style: getRegularStyle(),
                       ),
                     ),
                   ],
@@ -90,7 +92,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 CustomButton(
                   text: 'Sign in',
-                  function: () {},
+                  function: () {
+                    navigateAndFinish(context, const NavigationScreen());
+                  },
                 ),
                 Space(),
                 Row(
@@ -105,8 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Text(
                       '    You can connect with    ',
                       style: getRegularStyle(
-                          color: ColorManager.textColorLight,
-                          fontSize: FontSize.f12),
+                          color: ColorManager.textColorLight),
                     ),
                     const Expanded(
                       child: Divider(
@@ -121,17 +124,17 @@ class _LoginScreenState extends State<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     //todo: add colored logos
-                    IconButton(onPressed: () {}, icon: Icon(FontAwesomeIcons.facebook)),
-                    IconButton(onPressed: () {}, icon: Icon(FontAwesomeIcons.apple)),
-                    IconButton(onPressed: () {}, icon: Icon(FontAwesomeIcons.google))
+                    IconButton(onPressed: () {}, icon: const Icon(FontAwesomeIcons.facebook, size: 30,)),
+                    IconButton(onPressed: () {}, icon: const Icon(FontAwesomeIcons.apple, size: 30,)),
+                    IconButton(onPressed: () {}, icon: const Icon(FontAwesomeIcons.google, size: 30,))
                   ],
                 ),
                 Space(height: 6,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('Don\'t have an account', style: getMediumStyle(fontSize: FontSize.f14),),
-                    Text('  Sign Up here', style: getMediumStyle(fontSize: FontSize.f14, color: ColorManager.primary),),
+                    Text('Don\'t have an account', style: getMediumStyle(),),
+                    Text('  Sign Up here', style: getMediumStyle(color: ColorManager.primary),),
                   ],
                 )
               ],
