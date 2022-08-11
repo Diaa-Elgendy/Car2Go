@@ -72,6 +72,7 @@ flutter:
     - assets/images/
     - assets/images/cars/
     - assets/images/icons/
+    - assets/images/car_logos/
     - assets/fonts/
 
 

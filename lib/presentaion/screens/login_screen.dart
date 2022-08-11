@@ -91,7 +91,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 5,
                 ),
                 CustomButton(
-                  text: 'Sign in',
+                  text: 'Login',
+                  function: () {
+                    navigateAndFinish(context, const NavigationScreen());
+                  },
+                ),
+                Space(),
+                CustomButton(
+                  text: 'Continue without login',
                   function: () {
                     navigateAndFinish(context, const NavigationScreen());
                   },

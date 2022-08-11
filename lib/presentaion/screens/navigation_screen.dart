@@ -1,5 +1,5 @@
 import 'package:car2go/presentaion/screens/favourite_screen.dart';
-import 'package:car2go/presentaion/screens/home_screen.dart';
+import 'package:car2go/presentaion/screens/home/home_screen.dart';
 import 'package:car2go/presentaion/screens/profile_screen.dart';
 import 'package:car2go/presentaion/screens/search_screen.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +30,6 @@ class _NavigationScreenState extends State<NavigationScreen> {
         children: const [
           HomeScreen(),
           FavouriteScreen(),
-          SearchScreen(),
           ProfileScreen()
         ],
       ),
@@ -54,7 +53,6 @@ class _NavigationScreenState extends State<NavigationScreen> {
           BottomNavigationBarItem(icon: Icon(Icons.home_filled), label: 'Home'),
           BottomNavigationBarItem(
               icon: Icon(Icons.favorite), label: 'Favourite'),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
         ],
       ),

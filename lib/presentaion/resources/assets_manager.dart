@@ -31,4 +31,15 @@ class ImageAssets{
   static const String fordMustang_1 = 'assets/images/cars/ford_mustang_2022_1.jpg';
   static const String fordMustang_2 = 'assets/images/cars/ford_mustang_2022_2.jpg';
   static const String fordMustang_3 = 'assets/images/cars/ford_mustang_2022_3.jpg';
+
+
+  static const String audiLogo = 'assets/images/car_logos/audi_logo.png';
+  static const String bmwLogo = 'assets/images/car_logos/bmw_logo.png';
+  static const String kiaLogo = 'assets/images/car_logos/kia_logo.png';
+  static const String mercedesLogo = 'assets/images/car_logos/mercedes_logo.png';
+  static const String teslaLogo = 'assets/images/car_logos/tesla_logo.png';
+  static const String toyotaLogo = 'assets/images/car_logos/toyota_logo.png';
+  static const String volkswagenLogo = 'assets/images/car_logos/volkswagen_logo.png';
+
+
 }

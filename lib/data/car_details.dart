@@ -1,3 +1,5 @@
+import 'package:car2go/business_logic/enums.dart';
+
 import '../presentaion/resources/assets_manager.dart';
 
 class CarDetails {
@@ -13,12 +15,14 @@ class CarDetails {
   List<String> images;
   int priceForDay;
   bool favourite;
+  CarType category;
 
   CarDetails({
     required this.id,
     required this.company,
     required this.model,
     required this.coverPhoto,
+    required this.category,
     required this.specs,
     required this.carInfo,
     required this.capacity,
@@ -84,6 +88,7 @@ List<CarDetails> cars = [
     id: 1,
     company: 'Porsche',
     model: '718 Cayman - 2020',
+    category: CarType.coupe,
     coverPhoto: ImageAssets.porscheCaymanCover,
     specs: Specs(
         maxPower: 350,
@@ -114,6 +119,7 @@ List<CarDetails> cars = [
     company: 'Kia',
     model: 'Cerato - 2022',
     coverPhoto: ImageAssets.kiaCeratoCover,
+    category: CarType.sedan,
 
     specs: Specs(
         maxPower: 170,
@@ -143,6 +149,8 @@ List<CarDetails> cars = [
 
     company: 'Toyota',
     model: 'Corolla - 2022',
+    category: CarType.sedan,
+
     coverPhoto: ImageAssets.toyotaCorollaCover,
 
     specs: Specs(
@@ -170,6 +178,7 @@ List<CarDetails> cars = [
   ),
   CarDetails(
     id: 4,
+    category: CarType.coupe,
 
     company: 'Ford',
     model: 'Mustang GT - 2022',
@@ -202,6 +211,7 @@ List<CarDetails> cars = [
 
 CarDetails porscheCayman = CarDetails(
   id: 1,
+  category: CarType.coupe,
 
   company: 'Porsche',
   model: '718 Cayman - 2020',

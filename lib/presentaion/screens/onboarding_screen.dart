@@ -4,7 +4,7 @@ import 'package:car2go/presentaion/resources/font_manager.dart';
 import 'package:car2go/presentaion/resources/routes_manager.dart';
 import 'package:car2go/presentaion/resources/style_manager.dart';
 import 'package:car2go/presentaion/resources/values_manager.dart';
-import 'package:car2go/presentaion/screens/home_screen.dart';
+import 'package:car2go/presentaion/screens/home/home_screen.dart';
 import 'package:car2go/presentaion/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';

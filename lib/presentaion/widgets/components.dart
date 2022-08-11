@@ -189,18 +189,18 @@ class RowWith2Texts extends StatelessWidget {
   }
 }
 
-class FavouriteItem extends StatefulWidget {
+class ListItem extends StatefulWidget {
   CarDetails carDetails;
   int index;
 
-  FavouriteItem({required this.carDetails, required this.index, Key? key})
+  ListItem({required this.carDetails, required this.index, Key? key})
       : super(key: key);
 
   @override
-  State<FavouriteItem> createState() => _FavouriteItemState();
+  State<ListItem> createState() => _ListItemState();
 }
 
-class _FavouriteItemState extends State<FavouriteItem> {
+class _ListItemState extends State<ListItem> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -263,10 +263,22 @@ class _FavouriteItemState extends State<FavouriteItem> {
                                 setState(() {
                                   widget.carDetails.favourite =
                                       !widget.carDetails.favourite;
-                                  if (widget.carDetails.favourite) {
-                                    favourites.add(widget.carDetails);
-                                  } else {
-                                    favourites.remove(favourites[widget.index]);
+                                  if (widget.carDetails.favourite){
+                                    for(int i =0; i<cars.length;i++){
+                                      if (cars[i].id== widget.carDetails.id) {
+                                        favourites.add(cars[i]);
+                                        break;
+                                      }
+                                    }
+                                    print(cars[widget.index].model);
+                                    print(widget.carDetails.model);
+                                  }else{
+                                    for(int i =0; i<favourites.length;i++){
+                                      if (favourites[i].id == widget.carDetails.id) {
+                                        favourites.remove(favourites[i]);
+                                        break;
+                                      }
+                                    }
                                   }
                                 });
                               },
