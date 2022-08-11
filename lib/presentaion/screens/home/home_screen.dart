@@ -1,16 +1,11 @@
 import 'package:car2go/data/brands.dart';
 import 'package:car2go/data/car_details.dart';
 import 'package:car2go/data/categories.dart';
-import 'package:car2go/presentaion/modules/CarsModule.dart';
-import 'package:car2go/presentaion/resources/assets_manager.dart';
 import 'package:car2go/presentaion/resources/color_manager.dart';
 import 'package:car2go/presentaion/resources/font_manager.dart';
 import 'package:car2go/presentaion/resources/values_manager.dart';
-import 'package:car2go/presentaion/modules/CategoryModule.dart';
-import 'package:car2go/presentaion/screens/car_details_screen.dart';
 import 'package:car2go/presentaion/screens/home/home_widgets.dart';
 import 'package:car2go/presentaion/widgets/components.dart';
-import 'package:car2go/presentaion/modules/BrandsModule.dart';
 import 'package:flutter/material.dart';
 import '../../resources/style_manager.dart';
 
@@ -22,17 +17,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  //late CarDetails carDetails;
-  late int index;
-  List<CategoryModule> categories = <CategoryModule>[
-    CategoryModule(categoryName: "nessan", urlImage: ImageAssets.logo),
-    CategoryModule(categoryName: "nessan", urlImage: ImageAssets.logo),
-    CategoryModule(categoryName: "nessan", urlImage: ImageAssets.logo),
-    CategoryModule(categoryName: "nessan", urlImage: ImageAssets.logo),
-    CategoryModule(categoryName: "nessan", urlImage: ImageAssets.logo),
-    CategoryModule(categoryName: "nessan", urlImage: ImageAssets.logo),
-  ];
-
 
   @override
   Widget build(BuildContext context) {
@@ -93,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisCount: 3,
               crossAxisSpacing: 5,
               mainAxisSpacing: 10,
-              children: List.generate(categories.length, (index) {
+              children: List.generate(6, (index) {
                 return CategoryItem(category: dummyCategories[index]);
               }),
             ),

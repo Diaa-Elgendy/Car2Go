@@ -1,11 +1,7 @@
 import 'package:car2go/data/categories.dart';
-import 'package:car2go/presentaion/modules/CategoryModule.dart';
 import 'package:car2go/presentaion/resources/values_manager.dart';
 import 'package:car2go/presentaion/widgets/components.dart';
 import 'package:flutter/material.dart';
-
-import '../../modules/BrandsModule.dart';
-import '../../resources/assets_manager.dart';
 import '../../resources/color_manager.dart';
 import '../../resources/font_manager.dart';
 import '../../resources/style_manager.dart';
