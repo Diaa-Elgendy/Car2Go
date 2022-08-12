@@ -58,7 +58,7 @@ class ProfileScreen extends StatelessWidget {
           Space(),
           Center(
             child: Text(
-              'Diaa Elgendy',
+              'Dummy User',
               style: getSemiBoldStyle(
                   color: ColorManager.textColor, fontSize: FontSize.f20),
             ),
@@ -66,7 +66,7 @@ class ProfileScreen extends StatelessWidget {
           Space(height: 5),
           Center(
             child: Text(
-              'Diaaelgendy@gmail.com',
+              'Dummyuser@gmail.com',
               style: getMediumStyle(
                   color: ColorManager.textColorLight, fontSize: FontSize.f16),
             ),

@@ -158,14 +158,21 @@ class _PaymentScreenState extends State<PaymentScreen> {
               themeColor: Colors.red,
             ),
             Space(),
-            RowWith2Texts(title: '     TOTAL', value: "${widget.cost} EGP     ", fontSize: FontSize.f20),
+            const Divider(
+              color: ColorManager.primary,
+              thickness: 0.5,
+            ),
             Space(),
-            CustomButton(
-              text: 'PAY NOW',
-              function: (){},
-
-            )
+            RowWith2Texts(title: '     TOTAL', value: "${widget.cost} EGP     ", fontSize: FontSize.f20),
           ],
+        ),
+      ),
+      bottomNavigationBar: Container(
+        padding: const EdgeInsets.all(AppPadding.cardPadding),
+        child: CustomButton(
+          text: 'PAY NOW',
+          function: (){},
+
         ),
       ),
     );
