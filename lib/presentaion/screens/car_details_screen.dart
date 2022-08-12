@@ -16,9 +16,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CarDetailsScreen extends StatefulWidget {
   CarDetails carDetails;
-  int index;
 
-  CarDetailsScreen({required this.carDetails,required this.index, super.key});
+  CarDetailsScreen({required this.carDetails, super.key});
 
   @override
   State<CarDetailsScreen> createState() => _CarDetailsState();
@@ -52,12 +51,12 @@ class _CarDetailsState extends State<CarDetailsScreen> {
           children: [
             Text(
               widget.carDetails.company,
-              style: getMediumStyle(color: ColorManager.primary),
+              style: getMediumStyle(color: ColorManager.primary, fontSize: FontSize.f20),
             ),
             Text(
               widget.carDetails.model,
               style: getMediumStyle(
-                  fontSize: FontSize.f14, color: ColorManager.textColorLight),
+                  fontSize: FontSize.f18, color: ColorManager.textColorLight,),
             ),
           ],
         ),
@@ -289,8 +288,6 @@ class _CarDetailsState extends State<CarDetailsScreen> {
                   break;
                 }
               }
-              print(cars[widget.index].model);
-              print(widget.carDetails.model);
             }else{
               for(int i =0; i<favourites.length;i++){
                 if (favourites[i].id == widget.carDetails.id) {

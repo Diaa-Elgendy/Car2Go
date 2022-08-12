@@ -1,7 +1,6 @@
 import 'package:car2go/presentaion/screens/favourite_screen.dart';
 import 'package:car2go/presentaion/screens/home/home_screen.dart';
 import 'package:car2go/presentaion/screens/profile_screen.dart';
-import 'package:car2go/presentaion/screens/search_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../resources/color_manager.dart';

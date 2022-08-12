@@ -9,10 +9,10 @@ class Category{
   Category({required this.image, required this.name, required  this.type});
 }
 List<Category> dummyCategories = [
-  Category(image: ImageAssets.audiLogo, name: 'Sedan', type: CarType.sedan),
-  Category(image: ImageAssets.audiLogo, name: 'Coupe', type: CarType.coupe),
-  Category(image: ImageAssets.audiLogo, name: 'SUV', type: CarType.suv),
-  Category(image: ImageAssets.audiLogo, name: 'Crossover', type: CarType.crossover),
-  Category(image: ImageAssets.audiLogo, name: 'Minivan', type: CarType.minivan),
-  Category(image: ImageAssets.audiLogo, name: 'Roadster', type: CarType.roadster),
+  Category(image: ImageAssets.sedan, name: 'Sedan', type: CarType.sedan),
+  Category(image: ImageAssets.coupe, name: 'Coupe', type: CarType.coupe),
+  Category(image: ImageAssets.suv, name: 'SUV', type: CarType.suv),
+  Category(image: ImageAssets.crossover, name: 'Crossover', type: CarType.crossover),
+  Category(image: ImageAssets.hatchback, name: 'Hatchback', type: CarType.minivan),
+  Category(image: ImageAssets.roadster, name: 'Roadster', type: CarType.roadster),
 ];

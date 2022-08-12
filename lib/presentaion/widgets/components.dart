@@ -191,9 +191,8 @@ class RowWith2Texts extends StatelessWidget {
 
 class ListItem extends StatefulWidget {
   CarDetails carDetails;
-  int index;
 
-  ListItem({required this.carDetails, required this.index, Key? key})
+  ListItem({required this.carDetails, Key? key})
       : super(key: key);
 
   @override
@@ -212,7 +211,7 @@ class _ListItemState extends State<ListItem> {
                 context,
                 MaterialPageRoute(
                   builder: (context) => CarDetailsScreen(
-                      carDetails: widget.carDetails, index: widget.index),
+                      carDetails: widget.carDetails),
                 )).then((value) {
               setState(() {});
             });
@@ -240,14 +239,20 @@ class _ListItemState extends State<ListItem> {
                     children: [
                       Text(
                         widget.carDetails.company,
-                        style: getMediumStyle(color: ColorManager.primary),
+                        style: getMediumStyle(color: ColorManager.primary, fontSize: FontSize.f18),
                       ),
+                      Space(height: 5),
                       Text(
                         widget.carDetails.model,
                         style:
                             getRegularStyle(color: ColorManager.textColorLight),
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
+                      ),
+                      Text(
+                        widget.carDetails.category.name,
+                        style:
+                        getRegularStyle(color: ColorManager.textColorLight),
                       ),
                       const Spacer(),
                       Row(
@@ -270,8 +275,7 @@ class _ListItemState extends State<ListItem> {
                                         break;
                                       }
                                     }
-                                    print(cars[widget.index].model);
-                                    print(widget.carDetails.model);
+
                                   }else{
                                     for(int i =0; i<favourites.length;i++){
                                       if (favourites[i].id == widget.carDetails.id) {

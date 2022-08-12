@@ -5,6 +5,7 @@ import 'package:car2go/presentaion/resources/font_manager.dart';
 import 'package:car2go/presentaion/resources/routes_manager.dart';
 import 'package:car2go/presentaion/resources/style_manager.dart';
 import 'package:car2go/presentaion/resources/values_manager.dart';
+import 'package:car2go/presentaion/screens/Signup_screen.dart';
 import 'package:car2go/presentaion/screens/navigation_screen.dart';
 import 'package:car2go/presentaion/widgets/components.dart';
 import 'package:car2go/presentaion/widgets/custom_button.dart';
@@ -141,7 +142,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text('Don\'t have an account', style: getMediumStyle(),),
-                    Text('  Sign Up here', style: getMediumStyle(color: ColorManager.primary),),
+                    TextButton(onPressed: () {
+                      navigateTo(context: context, widget: const SignupScreen());
+                    },
+                    child: Text('  Sign Up here', style: getMediumStyle(color: ColorManager.primary),)),
                   ],
                 )
               ],

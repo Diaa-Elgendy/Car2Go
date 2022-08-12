@@ -41,5 +41,12 @@ class ImageAssets{
   static const String toyotaLogo = 'assets/images/car_logos/toyota_logo.png';
   static const String volkswagenLogo = 'assets/images/car_logos/volkswagen_logo.png';
 
+  static const String sedan = 'assets/images/cars/sedan.png';
+  static const String suv = 'assets/images/cars/suv.png';
+  static const String crossover = 'assets/images/cars/crossover.png';
+  static const String roadster = 'assets/images/cars/roadster.png';
+  static const String coupe = 'assets/images/cars/coupe.png';
+  static const String hatchback = 'assets/images/cars/hatchback.png';
+
 
 }

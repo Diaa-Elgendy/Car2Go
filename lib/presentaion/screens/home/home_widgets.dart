@@ -13,24 +13,32 @@ class CategoryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              category.image,
-              width: 70,
-              height: 70,
-            ),
-            Space(height: 5),
-            Text(
-              category.name,
-              style: getRegularStyle(
-                fontSize: FontSize.f20,
-                color: ColorManager.primary,
-              ),
-            ),
-          ]),
+    return SizedBox(
+      width: 150,
+      child: Card(
+        child: InkWell(
+          onTap: (){},
+          borderRadius: BorderRadius.circular(AppSize.borderRadius),
+          child: Padding(
+            padding: const EdgeInsets.all(AppPadding.cardPadding),
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    category.image,
+                    height: 100,
+                  ),
+                  Text(
+                    category.name,
+                    style: getMediumStyle(
+                      fontSize: FontSize.f20,
+                      color: ColorManager.primary,
+                    ),
+                  ),
+                ]),
+          ),
+        ),
+      ),
     );
   }
 }
@@ -42,10 +50,15 @@ class BrandItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(AppPadding.cardPadding),
-        child: Image.asset(
-          brandImage,
+      child: InkWell(
+        onTap: (){},
+        borderRadius: BorderRadius.circular(AppSize.borderRadius),
+
+        child: Padding(
+          padding: const EdgeInsets.all(AppPadding.cardPadding),
+          child: Image.asset(
+            brandImage,
+          ),
         ),
       ),
     );
